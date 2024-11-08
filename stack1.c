@@ -10,40 +10,27 @@ int main()
 	scanf("%d",&n);
 	printf("\n\t stack operations using array");
 	printf("\n\t 1.push \n\t 2.pop \n\t 3.display \n\t 4.exit ");
-	do
-	{
+	do{
 	printf("\n enter the choice: ");
 	scanf("%d",&choice);
 	switch(choice)
 	{
-		case 1:
-		{
-		push();
+		case 1: push();
 		break;
-		}
-		case 2: 
-		{
-		pop();
+		case 2: pop();
 		break;
-		}
-		case 3: 
-		{
-		display();
+		case 3: display();
 		break;
-		}
-		case 4: 
-		{
-		printf("\n\t exit");
+		case 4: printf("\n\t exit");
 		break;
-		}
 		default:
 		{
-		printf("\n enter valid choice(1/2/3/4)");
+		printf("\n enter valid choice (1/2/3/4)");
 		}
 	}
-
+}
 		while(choice!=4);
-		
+		return 0;
 }
 	void push()
 		{
@@ -53,7 +40,7 @@ int main()
 		}
 		else
 		{
-		printf("\n enter a value to be pushed");
+		printf("\n enter value to be pushed");
 		scanf("%d",&x);
 		top++;
 		stack[top]=x;
@@ -78,13 +65,9 @@ int main()
 		printf("\n the element in stack\n");
 		for(i=top;i>=0;i--)
 		printf("\n%d \n",stack[i]);
-		printf(" \npress next choice");
 		}
 		else
 		{
 		printf("\n stack is empty");
 		}
 		}
-		}
-		
-		

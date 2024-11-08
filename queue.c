@@ -1,91 +1,91 @@
 #include<stdio.h>
-int Q[100],element,size,front=-1,rear=-1,choice=1,i;
-void enqueue();
-void dequeue();
-void display();
+int A[20],size,front=-1,rear=-1;
+void ENQUEUE(int item);
+void DEQUEUE();
+void DISPLAY();
 int main()
 {
-printf("\n queue");
-printf("enter the size of the queue(max 100):");
-scanf("%d",&size);
-printf("\n1.Insert\n2.Delete\n3.Display");
-while(choice<5&&choice!=0)
-{
-printf("\n enter your choice:");
-scanf("%d",&choice);
-switch(choice)
-{
-case 1:
-	enqueue();
+	int item,opt;
+	printf("enter the size of the queue :\t");
+	scanf("%d",&size);
+	printf("1.ENQUEUE\n2.DEQUEUE\n3.DISPLAY\n4.EXIT\n");
+do
+	{
+	printf("select the option :\t");
+	scanf("%d",&opt);
+switch(opt)
+	{
+	case 1:
+	printf("enter the item to be inserted :\t");
+	scanf("%d",&item);
+	ENQUEUE(item);
 	break;
-case 2:
-	dequeue();
+	case 2:
+	DEQUEUE();
 	break;
-case 3:
-	display();
+	case 3:
+	DISPLAY();
 	break;
-default:
-	printf("\n enter valid choice");
+	case 4:
+	printf("EXIT\n");;
+	break;
+	default:
+	printf("invalid option");
+	}
 }
+while(opt!=4);
+return 0;
 }
-}
-void enqueue()
+void ENQUEUE(int item)
 {
-if(rear==size-1)
+	if(rear==size-1)
+	{
+	printf("queue is full\n");
+	}
+	else if(rear==-1)
+	{
+	rear=0;
+	front=0;
+	A[rear]=item;
+	}
+	else
+	{
+	rear++;
+	A[rear]=item;
+	}
+}
+
+void DEQUEUE()
 {
-printf("\n queue is full!!");
+	if(front==-1)
+	{
+	printf("queue is empty");
+	}
+	else if(front==rear)
+	{
+	printf("Deleted item is :%d\t",A[front]);
+	front==-1;
+	rear==-1;
+	}
+	else
+	{
+	printf("Deleted item is :%d\t",A[front]);
+	front++;
+	}
 }
-else if(front==-1&&rear==-1)
+void DISPLAY()
 {
-front=0;
-rear=0;
-printf("\n enter the element to insert:");
-scanf("%d",&element);
-Q[rear]=element;
-printf("\n inserted %d",element);
+	int i;
+		if(front==-1)
+		{
+		printf("\n queue is empty\n");
+		}
+		else
+		{
+		for(i=front;i<=rear;i++)
+		{
+		printf("\n%d \n",A[i]);
+		}
+		}
 }
-else
-{
-rear++;
-printf("\n enter the element to insert:");
-scanf("%d",&element);
-Q[rear]=element;
-printf("\n inserted %d",element);
-}
-}
-void dequeue()
-{
-if(front==-1&&rear==-1)
-{
-printf("\n queue is empty!!");
-}
-else if(front==rear)
-{
-element=Q[front];
-printf("\n deleted %d",element);
-front==-1;
-rear==-1;
-}
-else
-{
-element=Q[front];
-printf("\n deleted %d",Q[front]);
-front++;
-}
-}
-void display()
-{
-if(front==-1&&rear==-1)
-{
-printf("\n queue is empty!!");
-}
-else
-{
-printf("\n front:%d\n",front);
-for(i=front;i<=rear;i++)
-{
-printf("%d\t",Q[i]);
-}
-printf("\n rear:%d",rear);
-}
-}
+		
